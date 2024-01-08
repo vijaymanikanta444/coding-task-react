@@ -13,6 +13,7 @@ export default function RootLayout(props: React.PropsWithChildren) {
           <section className={styles.container}>
 
             <header className={styles.header}>
+              <div className={styles.heading}>Customised Counter</div>
               <img src="/logo.svg" className={styles.logo} alt="logo" />
             </header>
 
