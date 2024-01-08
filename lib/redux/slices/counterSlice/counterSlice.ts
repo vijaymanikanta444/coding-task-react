@@ -17,13 +17,21 @@ export const counterSlice = createSlice({
     decreament: (state: CounterSliceState) => {
       state.value -= 1;
     },
+    incrementByAmount: (state: CounterSliceState, action: incrementByAmountAction) => {
+      state.value += action.payload
+    }
   },
 });
 
-export const { increment, decreament } = counterSlice.actions;
+export const { increment, decreament, incrementByAmount } = counterSlice.actions;
 
 /* Types */
 export interface CounterSliceState {
   value: number;
   status: "idle" | "loading" | "failed";
+}
+
+export interface incrementByAmountAction {
+  type: string;
+  payload : number
 }
