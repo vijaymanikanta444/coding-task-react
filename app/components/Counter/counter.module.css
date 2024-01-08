@@ -40,11 +40,27 @@
 .textbox {
   font-size: 32px;
   padding: 2px;
-  width: 64px;
+  width: 100%;
   text-align: center;
   margin-right: 4px;
 }
 
+/* To remove the up arrow and down arrow when the type is number for the input */
+/* Firefox */
+.textbox[type="number"] {
+  -moz-appearance: textfield; 
+}
+
+/* rest browsers */
+.textbox[type="number"]::-webkit-inner-spin-button,
+.textbox[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.textbox:hover,
+.textbox:focus,
 .button:hover,
 .button:focus {
   border: 2px solid rgba(112, 76, 182, 0.4);

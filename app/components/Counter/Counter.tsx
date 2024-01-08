@@ -45,13 +45,15 @@ export const Counter = () => {
         </button>
       </div>
       <div className={styles.row}>
-      <input
+        <input
           type="number"
           className={styles.textbox}
           value={incrementAmount}
           onChange={(e) => setIncrementAmount(Number(e.target.value))}
           aria-label="Set increment amount"
         />
+      </div>
+      <div className={styles.row}>
         <button
           className={styles.button}
           onClick={() => {
