@@ -11,6 +11,7 @@ import {
   increment,
   decreament,
   incrementByAmount,
+  incrementIfOddAsync
 } from "@/lib/redux";
 import styles from "./counter.module.css";
 
@@ -59,13 +60,13 @@ export const Counter = () => {
           onClick={() => {
             dispatch(incrementByAmount(incrementAmount));
           }}
-        >
+          >
           Add Amount
         </button>
         <button
           className={styles.button}
           onClick={() => {
-            // dispatch event to add incrementAmount only if count is odd
+            dispatch(incrementIfOddAsync(incrementAmount));
           }}
         >
           Add If Odd
