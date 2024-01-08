@@ -4,13 +4,23 @@
 import { useState } from "react";
 
 /* Instruments */
-import { useSelector, selectCount } from "@/lib/redux";
+import {
+  useSelector,
+  selectCount,
+  useDispatch,
+  increment,
+  decreament,
+  incrementByAmount,
+  incrementIfOddAsync
+} from "@/lib/redux";
 import styles from "./counter.module.css";
 
 export const Counter = () => {
   const count = useSelector(selectCount);
+  const dispatch = useDispatch();
 
-  // Create a state named incrementAmount
+// state to store the increment value
+  const [incrementAmount, setIncrementAmount] = useState<number>(0);
 
   return (
     <div>
@@ -19,7 +29,7 @@ export const Counter = () => {
           className={styles.button}
           aria-label="Decrement value"
           onClick={() => {
-            // dispatch event to decrease count by 1
+            dispatch(decreament());
           }}
         >
           -
@@ -29,26 +39,34 @@ export const Counter = () => {
           className={styles.button}
           aria-label="Increment value"
           onClick={() => {
-            // dispatch event to increment count by 1
+            dispatch(increment());
           }}
         >
           +
         </button>
       </div>
       <div className={styles.row}>
-        <input className={styles.textbox} aria-label="Set increment amount" />
+        <input
+          type="number"
+          className={styles.textbox}
+          value={incrementAmount}
+          onChange={(e) => setIncrementAmount(Number(e.target.value))}
+          aria-label="Set increment amount"
+        />
+      </div>
+      <div className={styles.row}>
         <button
           className={styles.button}
           onClick={() => {
-            // dispatch event to add incrementAmount to count
+            dispatch(incrementByAmount(incrementAmount));
           }}
-        >
+          >
           Add Amount
         </button>
         <button
           className={styles.button}
           onClick={() => {
-            // dispatch event to add incrementAmount only if count is odd
+            dispatch(incrementIfOddAsync(incrementAmount));
           }}
         >
           Add If Odd

@@ -1,8 +1,13 @@
 /* Instruments */
-import type { ReduxThunkAction } from "@/lib/redux";
+import  { ReduxThunkAction, incrementByAmount, CounterSliceState } from "@/lib/redux";
+
 
 export const incrementIfOddAsync =
   (amount: number): ReduxThunkAction =>
-  () => {
-    // update only if currentValue is odd
+  (dispatch, getState) => {
+    const { counter } : {counter : CounterSliceState} = getState();
+
+    if(counter?.value % 2 !== 0){
+      dispatch(incrementByAmount(amount))
+    }
   };
