@@ -19,6 +19,12 @@
   grid-area: header;
 }
 
+.heading {
+font-size: 32px;
+color: #704cb6;
+margin-top: 12px;
+}
+
 .main {
   grid-area: main;
 }
